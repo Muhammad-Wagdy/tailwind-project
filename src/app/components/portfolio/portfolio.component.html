@@ -1,0 +1,34 @@
+<div class="bg-white relative dark:bg-gray-900">
+  <div class="pt-8 text-center">
+    <h2 class="uppercase mb-3 text-4xl font-extrabold text-black dark:text-white">portfolio component</h2>
+    <div
+      class="relative flex items-center justify-center mb-6 before:content-[''] before:block before:w-20 before:h-[3px] before:bg-black dark:before:bg-white before:mr-4 after:content-[''] after:block after:w-20 after:h-[3px] dark:after:bg-white after:bg-black after:ml-4  dark:text-white"
+    >
+      <i class="fa-solid fa-star text-black  dark:text-white"></i>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
+      @for(img of images; track img) {
+      <div class="rounded-lg overflow-hidden relative cursor-pointer group" (click)="showImg(img)">
+        <img [src]="img" class="w-full rounded-lg" />
+        <div
+          class="absolute inset-0 bg-[#1abc9ce6] opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex justify-center items-center"
+        >
+          <i class="fa-solid fa-plus text-white text-6xl"></i>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  @if (selectedImg) {
+  <div class="fixed inset-0 bg-black/80 flex justify-center items-center z-50" (click)="hideImg()">
+    <img
+      [src]="selectedImg"
+      class="max-w-[60%] max-h-[70%] border-4 border-white rounded-lg"
+      (click)="$event.stopPropagation()"
+    />
+  </div>
+  }
+</div>
